@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
+import requests
 
-with open('home.html', 'r') as html_file:
-    content = html_file.read()
-
-    soup = BeautifulSoup(content, 'lxml' )
-    tags = soup.find('td')
-    print(tags)
+html_text = requests.get(
+    'https://www.ziprecruiter.com/candidate/search?radius=5000&search=entry+level+software+engineer+&location=').text
+soup = BeautifulSoup(html_text, 'lxml')
+rating = soup.find_all('div')
+print(rating)
