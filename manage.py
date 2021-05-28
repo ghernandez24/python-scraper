@@ -4,5 +4,6 @@ with open('home.html', 'r') as html_file:
     content = html_file.read()
 
     soup = BeautifulSoup(content, 'lxml' )
-    tags = soup.find('td')
-    print(tags)
+    name_html_tags = soup.find_all('td')
+    for name in name_html_tags:
+        print(name.text)
